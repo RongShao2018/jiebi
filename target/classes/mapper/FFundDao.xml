@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rong.dao.IFFundDao">
+
+    <resultMap id="FFundResultMap" type="com.rong.model.FFund">
+        <id column="fId" property="fId"/>
+        <result column="date" property="date"/>
+        <result column="fExpenditure" property="fExpenditure"/>
+        <result column="fIncome" property="fIncome"/>
+        <result column="fBudge" property="fBudge"/>
+        <result column="fCapital" property="fCapital"/>
+    </resultMap>
+
+    <select id="selectFFund" resultMap="FFundResultMap" parameterType="String">
+        SELECT * FROM `ffund` where DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m') and fId = #{fId}
+    </select>
+
+    <update id="updateBudget" parameterType="FFund">
+        update `ffund` set fBudget = #{fBudget} where fId = #{fId} and DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m')
+    </update>
+    
+    <update id="updateCapital" parameterType="FFund">
+        update `ffund` set fCapital = #{fCapital} where fId = #{fId} and DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m')
+    </update>
+</mapper>

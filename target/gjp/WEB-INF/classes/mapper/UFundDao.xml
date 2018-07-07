@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rong.dao.IUFundDao">
+
+    <resultMap id="UFundResultMap" type="com.rong.model.UFund">
+        <id column="id" property="id"/>
+        <result column="date" property="date"/>
+        <result column="uExpenditure" property="uExpenditure"/>
+        <result column="uIncome" property="uIncome"/>
+        <result column="uBudge" property="uBudge"/>
+    </resultMap>
+
+    <select id="selectUFund" resultMap="UFundResultMap" parameterType="String">
+        SELECT * FROM `ufund` where DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m') and id = #{id}
+    </select>
+
+
+    <select id="selectUFundByFId" resultMap="UFundResultMap" parameterType="String">
+        SELECT * FROM `ufund` where DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m') and id like '${_parameter}%'
+    </select>
+
+    <update id="updateUBudget" parameterType="UFund">
+        update `ufund` set uBudget = #{uBudget} where id = #{id} and DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m')
+    </update>
+</mapper>

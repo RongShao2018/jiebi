@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta  charset="utf-8">
+<title>账户概览</title>
+<script type="text/javascript">
+</script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="css/account.css" rel="stylesheet" type="text/css" />
+
+<script>
+    function changebudget()
+    {
+        var money; //score变量，用来存储用户输入的成绩值。
+        money = prompt("请输入本月的预算") ;
+        x=document.getElementById("num_budget"); 
+        x.innerHTML=money; 
+    }
+</script>
+
+</head>
+
+<body style="background-image:url();background-position:center; background-repeat:repeat-y">
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">管家婆</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="file:///E:/%E5%89%8D%E7%AB%AF/%E7%AE%A1%E5%AE%B6%E5%A9%86/%E8%B4%A6%E6%88%B7.html">账户</a>
+                        </li>
+                        <li>
+                            <a href="file:///E:/%E5%89%8D%E7%AB%AF/%E7%AE%A1%E5%AE%B6%E5%A9%86/%E6%94%B6%E6%94%AF.html">记账</a>
+                        </li>
+                        <li>
+                            <a href="file:///E:/%E5%89%8D%E7%AB%AF/%E7%AE%A1%E5%AE%B6%E5%A9%86/%E6%8A%A5%E8%A1%A8.html">报表</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                             <a href="file:///E:/%E5%89%8D%E7%AB%AF/%E7%AE%A1%E5%AE%B6%E5%A9%86/%E7%99%BB%E5%BD%95.html">退出登录</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="inner">
+            <div class="asset">
+                <h1>资产概览</h1>
+                <hr style="height:2px;background-color:black;margin-top: -2px;" />
+                <table class="table table-condensed table-hover" >
+                <thead>
+                    <tr>
+                        <th>总资产</th>
+                        <th>负债额</th>
+                        <th>净资产</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1<span id="num_zichan" ></span></td>
+                        <td>2<span id="num_fuzhai" ></span></td>
+                        <td>3<span id="num_jingzichan" ></span></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            <div class="statistics">
+                <h2>收支表</h2>
+                <hr style="height:2px;background-color:black;margin-top: -2px;" />
+                <table class="table table-condensed table-hover" >
+                <thead>
+                    <tr>
+                        <th> </th>
+                        <th>今日</th>
+                        <th>最近七天</th>
+                        <th>本月份</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>收入</td>
+                        <td>111111<span id="num_todayin" ></span></td>
+                        <td>222222<span id="num_weekin" ></span></td>
+                        <td>333333<span id="num_monthin" ></span></td>
+                    </tr>
+                    <tr>
+                        <td>支出</td>
+                        <td>444444<span id="num_todayout" ></span></td>
+                        <td>555555<span id="num_weekout" ></span></td>
+                        <td>666666<span id="num_monthout" ></span></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            <div class="budget">
+                <div class="bud">
+                    <h3 style="color:#C70039">本月预算额度：</h3>
+                    <span id="num_budget" ></span><br><br>
+                    <h3 style="color:#2EB872">本月已经使用：</h3>
+                    <span id="num_used" ></span><br><br>
+                    <h3 style="color:#155263">剩余可用额度：</h3>
+                    <span id="num_unused" ></span><br><br>
+                </div>
+                <button class="button" type="button" onclick="changebudget()"><span>重新设置额度 </span></button><br>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

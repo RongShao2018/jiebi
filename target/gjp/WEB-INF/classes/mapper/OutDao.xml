@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rong.dao.IOutDao">
+
+    <resultMap id="OutResultMap" type="com.rong.model.Out">
+        <id column="id" property="id"/>
+        <result column="outSort" property="outSort"/>
+        <result column="outAmounts" property="outAmounts"/>
+        <result column="date" property="date"/>
+        <result column="place" property="place"/>
+        <result column="object" property="object"/>
+        <result column="notes" property="notes"/>
+        <result column="unit" property="unit"/>
+    </resultMap>
+    
+    <select id="selectAmoToday" resultMap="OutResultMap" parameterType="String">
+        SELECT * FROM `out` where to_days(date) = to_days(now()) and id = #{id}
+    </select>
+
+    <select id="selectAmoYesterday" resultMap="OutResultMap" parameterType="String">
+        SELECT * FROM `out` WHERE TO_DAYS(NOW()) - TO_DAYS(date) = 1 and id =  #{id}
+    </select>
+
+    <select id="selectAmoSevenDay" resultMap="OutResultMap" parameterType="String">
+        SELECT * FROM `out` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date and id =  #{id}
+    </select>
+
+    <select id="selectAmoMonth" resultMap="OutResultMap" parameterType="String">
+        SELECT * FROM `out` where DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m') and id =  #{id}
+    </select>
+
+    <insert id="insert" parameterType="Out">
+        insert into `out`(id,outSort,outAmounts,date,place,object,notes,unit) values(#{id}, #{outSort}, #{outAmounts}, #{date}, #{place}, #{object}, #{notes}, #{unit})
+    </insert>
+
+    <select id="selectById" resultMap="OutResultMap" parameterType="String">
+        select * from `out` where id = #{id}
+    </select>
+
+    <select id="selectByIdDate" resultMap="OutResultMap">
+        select * from `out` where id = #{id} and date = #{date}
+    </select>
+
+    <select id="Amo500" resultMap="OutResultMap" parameterType="String">
+        select * from `out` where id = #{id} and outAmounts &lt;= 500
+    </select>
+
+    <select id="Amo2000" resultMap="OutResultMap" parameterType="String">
+        select * from `out` where id = #{id} and outAmounts &gt; 500 and outAmounts &lt;= 2000
+    </select>
+
+    <select id="Amobeyond2000" resultMap="OutResultMap" parameterType="String">
+        select * from `out` where id = #{id} and outAmounts &gt; 2000
+    </select>
+
+    <select id="SelectSort" resultMap="OutResultMap" parameterType="String">
+        select * from `out` where id = #{id} and outSort LIKE '${sort}%'
+    </select>
+
+    <select id="SelectSortMonth" resultMap="OutResultMap" parameterType="String">
+        select * from `out` where id = #{id} and outSort LIKE '${sort}%' and DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m')
+    </select>
+</mapper>

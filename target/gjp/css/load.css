@@ -1,0 +1,91 @@
+﻿body{ 
+	margin:0;
+	padding:0; 
+	background-color:#FFF;
+	color:#1E56A0; 
+}
+
+.page-header{
+	font-family: 微软雅黑;
+}
+
+.tabbable{
+	height: 450px;
+	width: 250px;
+	position: absolute;
+	right: 50px;
+}
+
+.loadpage{
+	height: 360px;
+	width: 250px;
+	background-color:#F6F6F6;
+	position: absolute;
+	padding-top:30px;
+	padding-left: 30px;
+}
+
+#carousel-279135{
+	height: 420px;
+	width: 800px;
+	position: absolute;
+	left: 20px;
+}
+
+.input-group{
+	margin-top: 10px;
+}
+
+.button{
+	display: inline-block;
+	width:160px;
+	height:50px;
+	line-height:18px;
+	background-color: #39F;
+	border-style: solid;
+	border-radius:10px 10px 10px 10px;
+	margin:4px 0 0 15px;
+	font-size: 20px;
+	font-family: 微软雅黑;
+	color:#FFF; 
+	transition: all 0.5s;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 5px;
+    } 
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+.form-signin input[type="text"] {
+
+    }
+
+.form-signin input[type="password"] {
+
+    }
+

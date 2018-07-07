@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rong.dao.IInDao">
+
+    <resultMap id="InResultMap" type="com.rong.model.In">
+        <id column="id" property="id"/>
+        <result column="inSort" property="inSort"/>
+        <result column="inAmounts" property="inAmounts"/>
+        <result column="date" property="date"/>
+        <result column="notes" property="notes"/>
+        <result column="unit" property="unit"/>
+    </resultMap>
+    <insert id="insert" parameterType="In">
+         insert into `in`(id,inSort,inAmounts,date,notes,unit) values(#{id}, #{inSort}, #{inAmounts}, #{date}, #{notes}, #{unit})
+    </insert>
+
+    <select id="selectInToday"  resultMap="InResultMap" parameterType="String">
+        select * from `in` where id = #{id} and to_days(date) = to_days(now())
+    </select>
+
+    <select id="selectInYesterday" resultMap="InResultMap" parameterType="String">
+        SELECT * FROM `in` WHERE TO_DAYS(NOW()) - TO_DAYS(date) = 1 and id =  #{id}
+    </select>
+
+    <select id="selectInSevenDay" resultMap="InResultMap" parameterType="String">
+        SELECT * FROM `in` where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date and id =  #{id}
+    </select>
+
+    <select id="selectInMonth" resultMap="InResultMap" parameterType="String">
+        SELECT * FROM `in` where DATE_FORMAT(date,'%Y-%m') = DATE_FORMAT(NOW(),'%Y-%m') and id =  #{id}
+    </select>
+
+    <select id="selectInById" resultMap="InResultMap" parameterType="String">
+        select * from `in` where id = #{id}
+    </select>
+
+    <select id="Amo500" resultMap="InResultMap" parameterType="String">
+        select * from `in` where id = #{id} and inAmounts &lt;= 500
+    </select>
+    
+    <select id="Amo2000" resultMap="InResultMap" parameterType="String">
+        select * from `in` where id = #{id} and inAmounts &gt; 500 and inAmounts &lt;= 2000
+    </select>
+    
+    <select id="Amobeyond2000" resultMap="InResultMap" parameterType="String">
+        select * from `in` where id = #{id} and inAmounts &gt; 2000
+    </select>
+
+    <select id="SelectSort" resultMap="InResultMap" parameterType="String">
+        select * from `in` where id = #{id} and inSort LIKE '${sort}%'
+    </select>
+
+</mapper>

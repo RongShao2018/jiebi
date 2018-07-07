@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta  charset="utf-8">
+<title>收支查看</title>
+<script type="text/javascript">
+    function yes(){
+        var  makesure=confirm("确认要添加吗？");
+        if(makesure==true)
+        {alert("添加成功!");return true;}
+        return false;
+    }
+</script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="css/record.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body style="background-image:url();background-position:center; background-repeat:repeat-y">
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">管家婆</a>
+                </div>
+                
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li >
+                            <a href="file:///E:/%E5%89%8D%E7%AB%AF/%E7%AE%A1%E5%AE%B6%E5%A9%86/%E8%B4%A6%E6%88%B7.html">账户</a>
+                        </li>
+                        <li class="active">
+                            <a href="file:///E:/%E5%89%8D%E7%AB%AF/%E7%AE%A1%E5%AE%B6%E5%A9%86/%E6%94%B6%E6%94%AF.html">记账</a>
+                        </li>
+                        <li>
+                            <a href="file:///E:/%E5%89%8D%E7%AB%AF/%E7%AE%A1%E5%AE%B6%E5%A9%86/%E6%8A%A5%E8%A1%A8.html">报表</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                             <a href="file:///E:/%E5%89%8D%E7%AB%AF/%E7%AE%A1%E5%AE%B6%E5%A9%86/%E7%99%BB%E5%BD%95.html">退出登录</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="inner">
+            <div class="bord1">
+                <div class="newrecord">
+                <div style="padding: 10px 10px 10px;">
+                    <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                    <span class="input-group-addon">收支</span>
+                    <select class="form-control"  name="inandout">
+                                <option>收入</option>
+                                <option>支出</option>
+                                </select>
+                    </div>
+                    <br>
+                    <div class="input-group">
+                    <span class="input-group-addon">类别</span>
+                    <input type="text" class="form-control" name="category">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                    <span class="input-group-addon">时间</span>
+                    <input type="text" class="form-control" name="time">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                    <span class="input-group-addon">金额</span>
+                    <input type="text" class="form-control" name="sum">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                    <span class="input-group-addon">地点</span>
+                    <input type="text" class="form-control" name="place">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                    <span class="input-group-addon">消费对象</span>
+                    <input type="text" class="form-control" name="member">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                    <span class="input-group-addon">备注</span>
+                    <input type="text" class="form-control" name="ps">
+                    </div>
+                    <br>
+                    </form>
+                    <button type="button" type="submit" class="btn btn-info" onclick="yes()"><span class="  glyphicon glyphicon-plus"></span> 添加</button>
+                </div>
+                </div>        
+            </div>
+            <div class="search">
+            <form class="form-signin" onsubmit="return check(this)" action="">
+            <div class="input-group">
+            <input type="text" class="form-control" name="sid"><span class="input-group-btn"><button class="btn btn-default" type="submit" >搜索查询</button></span>
+            </div>
+            </form>
+            </div>
+            <div class="bord2">
+                <div class="record">
+                <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>收支</th>
+                        <th>类别</th>
+                        <th>时间</th>
+                        <th>金额</th>
+                        <th>地点</th>
+                        <th>消费对象</th>
+                        <th>备注</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>收入</td>
+                        <td>工资</td>
+                        <td>11.25</td>
+                        <td>5000</td>
+                        <td>杭州下沙</td>
+                        <td>无</td>
+                        <td>无</td>
+                    </tr>
+                    <tr>
+                        <td>支出</td>
+                        <td>购物</td>
+                        <td>11.28</td>
+                        <td>2000</td>
+                        <td>淘宝</td>
+                        <td>我</td>
+                        <td>无</td>
+                    </tr>   
+                </tbody>
+                </table>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+</body>
+</html>
